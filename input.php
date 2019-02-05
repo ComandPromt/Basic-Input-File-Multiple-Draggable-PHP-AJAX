@@ -378,7 +378,8 @@
 							ajax.send( ajaxData );
 							
 							if(document.getElementById("mensaje").innerHTML!="Select"){
-								alert('Archivos subidos correctamente');
+								// Aquí el código para controlar si el archivo existe en la carpeta uploads
+								// Here the code to control if the file exists in the uploads folder
 								document.getElementById("mensaje").innerHTML='Select';
 							}
 					
@@ -386,16 +387,12 @@
 						else
 						{
 							var iframeName	= 'uploadiframe' + new Date().getTime(),
-								iframe		= document.createElement( 'iframe' );
-		
-								$iframe		= $( '<iframe name="' + iframeName + '" style="display: none;"></iframe>' );
-		
+							iframe		= document.createElement( 'iframe' );
+							$iframe		= $( '<iframe name="' + iframeName + '" style="display: none;"></iframe>' );
 							iframe.setAttribute( 'name', iframeName );
 							iframe.style.display = 'none';
-		
 							document.body.appendChild( iframe );
 							form.setAttribute( 'target', iframeName );
-		
 							iframe.addEventListener( 'load', function()
 							{
 								var data = JSON.parse( iframe.contentDocument.body.innerHTML );
@@ -436,10 +433,8 @@
 			$fichTemporal = $_FILES['upload']['tmp_name'][$i];
 		
 			if ($fichTemporal != ""){
-		
 				$destino = "./uploads/" . $_FILES['upload']['name'][$i];
-		
-					move_uploaded_file($fichTemporal, $destino);
+				move_uploaded_file($fichTemporal, $destino);
 			}   
 		}
 		

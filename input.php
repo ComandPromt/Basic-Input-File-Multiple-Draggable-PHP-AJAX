@@ -428,6 +428,7 @@
 			mkdir('uploads');
 		}
 		
+		if(isset($_FILES['upload']['name'])){
 		for($i=0; $i<count($_FILES['upload']['name']); $i++) {
 		
 			$fichTemporal = $_FILES['upload']['tmp_name'][$i];
@@ -436,6 +437,7 @@
 				$destino = "./uploads/" . $_FILES['upload']['name'][$i];
 				move_uploaded_file($fichTemporal, $destino);
 			}   
+		}
 		}
 		
 		?>

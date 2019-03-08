@@ -254,13 +254,11 @@
 		
 			;( function ( document, window, index )
 			{
-
 				var isAdvancedUpload = function()
 					{
 						var div = document.createElement( 'div' );
 						return ( ( 'draggable' in div ) || ( 'ondragstart' in div && 'ondrop' in div ) ) && 'FormData' in window && 'FileReader' in window;
 					}();
-
 				var forms = document.querySelectorAll( '.box' );
 				Array.prototype.forEach.call( forms, function( form )
 				{
@@ -279,13 +277,11 @@
 							event.initEvent( 'submit', true, false );
 							form.dispatchEvent( event );
 						};
-
 					var ajaxFlag = document.createElement( 'input' );
 					ajaxFlag.setAttribute( 'type', 'hidden' );
 					ajaxFlag.setAttribute( 'name', 'ajax' );
 					ajaxFlag.setAttribute( 'value', 1 );
 					form.appendChild( ajaxFlag );
-
 					input.addEventListener( 'change', function( e )
 					{
 						showFiles( e.target.files );
@@ -295,7 +291,6 @@
 		
 						
 					});
-
 					if( isAdvancedUpload )
 					{
 						form.classList.add( 'has-advanced-upload' ); // letting the CSS part to know drag&drop is supported by the browser
@@ -353,7 +348,6 @@
 									ajaxData.append( input.getAttribute( 'name' ), file );
 								});
 							}
-
 							var ajax = new XMLHttpRequest();
 							ajax.open( form.getAttribute( 'method' ), form.getAttribute( 'action' ), true );
 		
@@ -414,7 +408,6 @@
 							input.click();
 						});
 					});
-
 					input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
 					input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
 		
@@ -427,7 +420,7 @@
 		if(!file_exists('uploads')){
 			mkdir('uploads');
 		}
-		
+
 		if(isset($_FILES['upload']['name'])){
 		for($i=0; $i<count($_FILES['upload']['name']); $i++) {
 		
@@ -438,7 +431,7 @@
 				move_uploaded_file($fichTemporal, $destino);
 			}   
 		}
-		}
+	}
 		
 		?>
 		
